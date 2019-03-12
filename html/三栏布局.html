@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>高度已知，实现三栏布局，左右 300px 中间自适应。</title>
+</head>
+<style>
+    /* absolute定位 父级元素要绝对定位 页面结构复杂*/
+    /* body{
+        position: relative;
+    }
+    div{
+        height: 200px;
+    }
+    #left{
+        position: absolute;left: 0px;width: 300px;
+    }
+    #right{
+        position: absolute;right: 0px;width: 300px;
+    }
+    #center{
+        position: absolute;right: 300px;left:300px;;
+    } */
+
+
+    /* float 注：中间div 必须放在html结构尾部*/
+    /* body{
+        overflow: hidden;
+    }
+    div{
+        height: 200px;
+    }
+    #left{
+        float:left;width: 300px;
+    }
+    #right{
+        float:right;width: 300px;
+    }
+    #center{
+       margin: 0 300px;
+    }  */
+
+    /* flex 布局  未来趋势   http://www.runoob.com/w3cnote/flex-grammar.html*/
+    body{
+        display: flex;
+        justify-content: space-between; 
+    }
+    div{
+        height: 200px; 
+    }
+    #left,#right{
+        width: 300px; 
+    }
+    #center{
+        flex: 1;
+    }
+    /* grid网格布局 https://www.imooc.com/article/43143 */
+    /* body{
+        display: grid;
+        width: 100%;
+        grid-template-columns: 300px auto 300px;
+        grid-template-rows: 200px
+    }*/
+</style>
+<body>
+    <div id = "left" style="background : orange">我是左边</div>  
+
+    <div id = "center">我是中间awdddddddd我是中间awddddddddddddddddddd我是中间ddd我是中间ddd我是中间ddd我是中间ddd我是中间ddd我是中间ddd我是中间ddd我是中间dddada644665456546546dddddddddddd</div> 
+
+    <div id = "right" style="background : blueviolet">我是右边</div>
+
+     
+</body>
+</html>
