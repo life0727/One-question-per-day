@@ -1,14 +1,16 @@
 /* 选择器类型有哪些*/ 
 /**
 
-#id{} ID
-.class{} class
-p{} 标签
-*{} 通配
-:hover{} 伪类
-:first-child{} 伪元素
-p a{} 子代
-p + a{} 兄弟
+!important
+内联                    权重：1000
+#id{} ID               权重：100
+.class{} class         权重：10
+:hover{} 伪类          权重：等于class 10 
+p{} 标签               权重：1      
+:first-child{} 伪元素  权重：等于元素标签 1           
+*{} 通配               权重：0
+p a{} 子代             权重：0
+p + a{} 兄弟           权重：0
 
 **/ 
 
