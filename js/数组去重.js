@@ -13,6 +13,5 @@ for(let i of arr){
     res.indexOf(i) == -1 ? res.push(i) : ''
 }
 
-
 console.log(res)
 
