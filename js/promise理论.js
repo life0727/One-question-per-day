@@ -46,6 +46,17 @@
 
 `then和reject 都是异步操作完成（promise状态改变后）的回调函数。区别一个是fulfilled一个是rejected，一个不可选一个可选`
 `catch 用于指定发生错误时的回调函数.then(null, rejection)的别名`
-`all all方法用于将多个 Promise 实例(p1,p2,p3)，包装成一个新的 Promise 实例。并且当这三个实例全部变成fulffilled或者有一个变成rejdcted才会调用all的回调` //var p = Promise.all([p1, p2, p3]);
+`all all方法用于将多个 Promise 实例(p1,p2,p3)，包装成一个新的 Promise 实例。并且当这三个实例全部变成fulffilled或者有一个变成rejdcted才会调用all的回调` //var p = Promise.all([p1, p2, p3]); 
 `race 和all的用法相同 不过是当任何一个实例状态发生变化时他就会调用race的回调。其它没有执行完毕的异步操作仍然会继续执行！`
 
+//工作中实例
+// async function getNode(){
+//     return $.getJSON('./static/json/node.json');
+// }
+// async function getEdge(){
+//     return $.getJSON('./static/json/edge.json');
+// }
+// Promise.all([getNode(), getEdge()]).then((data) => {
+//     node = filterEdgeNum(data[0],filterNum)
+//     edge = filterEdgeNum(data[1],filterNum)
+// })    
