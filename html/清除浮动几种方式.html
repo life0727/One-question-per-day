@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style lang="">
+        .father{
+            border: 2px solid blue;
+        }
+        
+        .child1{
+            background: orange;
+            float: left;
+            width: 50px;
+            height: 50px;
+        }
+        .child2{
+            background: red;
+            float: left;
+            width: 50px;
+            height: 50px;
+        }
+
+        /* 为什么要清除浮动，清除浮动解决了什么问题？ */
+        /* 答：解决父级失去高度的问题（高度塌陷） */
+
+
+        /* `````````````````````````````````````````````````` */
+
+        /* 第一种：在浮动元素的结尾处添加有个div，style里加"clear: both"
+        <div class = "child3" style="clear: both"></div> */
+
+        /* 第二种：在父级上添加伪元素 .father::after{display:block;clear:both;content:"";visibility:hidden;height:0} （IE8上才支持伪类） */
+
+        /* 第三种：父级添加width并且overflow:hidden */
+    </style>
+</head>
+<body>
+    <div class = "father">
+        <div class = "child1"></div>
+        <div class = "child2"></div>
+    </div>
+</body>
+</html>
