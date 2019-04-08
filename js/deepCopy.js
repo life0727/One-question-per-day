@@ -25,3 +25,4 @@ console.log(a.reg === b.reg) //true
 console.log(a.date === b.date) //true
 console.log(a.fun === b.fun) //true
 console.log(a.err === b.err) //true
+
