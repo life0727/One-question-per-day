@@ -33,34 +33,89 @@
 
 // define()
 
-let objectNumArr = ['a','a','z','3','3','3','b','b','c','c','c','c','d'];
-let obj = {};
-objectNumArr.forEach((item) =>{
-    if(obj[item] == undefined){
-        obj[item] = 1
-    }else{
-        obj[item] += 1;
-    }
-})
+// let objectNumArr = ['a','a','z','3','3','3','b','b','c','c','c','c','d'];
+// let obj = {};
+// objectNumArr.forEach((item) =>{
+//     if(obj[item] == undefined){
+//         obj[item] = 1
+//     }else{
+//         obj[item] += 1;
+//     }
+// })
 
-let sortKey= Object.keys(obj).sort((a,b)=>{
-    return obj[a] - obj[b]
-})
-console.log(sortKey)
-let res = new Map();
-sortKey.forEach(item =>{
+// let sortKey = Object.keys(obj).sort((a,b)=>{
+//     return obj[a] - obj[b]
+// })
+// console.log(sortKey)
+// let res = new Map();
+// sortKey.forEach(item =>{
     
-    res.set(item,obj[item])
-})
+//     res.set(item,obj[item])
+// })
 
+// console.log(res)
+
+// function strMapToObj(strMap) {
+//     let obj = Object.create(null);
+//     for (let [k,v] of strMap) {
+//       obj[k] = v;
+//     }
+//     return obj;
+// }
+
+// console.log(strMapToObj(res))
+// var generate = function(numRows) {
+//     let res = [];
+//     for(let i = 0; i < numRows;i++){
+//         let arr = [];
+        
+//         arr[0]  = 1;
+//         arr[i] = 1
+//         arr.length = i+1
+//         if(i !== 0 && i !== 1){   //3行
+//             for(let j = 1 ;j < i;j++){
+//                 arr[j] = res[i - j - 1][j - 1] +res[i - j - 1][j]
+//                 console.log(arr[j])
+//             }
+//         }
+     
+//         res.push(arr)
+//     }
+//     return res;
+// };
+// console.log(generate(5))
+
+// var generate = function(numRows) {
+//         let res = [];
+//         for(let i = 0; i < numRows;i++){
+//             let arr = [];
+//             arr[0] = arr[i] = 1;
+//             if(i < 2 ){
+//                 res.push(arr)
+//             }else{
+//                 for(let j = 1 ;j <= i-1;j++){
+//                     arr[j] = res[i - 1][j - 1] + res[i - 1][j]
+//                 }  
+//                 res.push(arr)
+//             }
+//         }
+//         return res;
+//     };
+//     console.log(generate(3))
+
+var postorder = function(root) {
+    const result = [];
+ if (!root) return result;
+ const queue = [root];
+
+ while(queue.length) {
+   const current = queue.shift();
+   if (current == null) continue;
+   console.log(current.val)
+   result.push(current.val);
+   queue.unshift(...current.children.reverse());
+ }
+ return result.reverse();
+};
+var res = postorder(4)
 console.log(res)
-
-function strMapToObj(strMap) {
-    let obj = Object.create(null);
-    for (let [k,v] of strMap) {
-      obj[k] = v;
-    }
-    return obj;
-  }
-
-  console.log(strMapToObj(res))
