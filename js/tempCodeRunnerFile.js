@@ -103,19 +103,19 @@
 //     };
 //     console.log(generate(3))
 
-var postorder = function(root) {
-    const result = [];
- if (!root) return result;
- const queue = [root];
+// var postorder = function(root) {
+//     const result = [];
+//  if (!root) return result;
+//  const queue = [root];
 
- while(queue.length) {
-   const current = queue.shift();
-   if (current == null) continue;
-   console.log(current.val)
-   result.push(current.val);
-   queue.unshift(...current.children.reverse());
- }
- return result.reverse();
-};
-var res = postorder(4)
-console.log(res)
+//  while(queue.length) {
+//    const current = queue.shift();
+//    if (current == null) continue;
+//    console.log(current.val)
+//    result.push(current.val);
+//    queue.unshift(...current.children.reverse());
+//  }
+//  return result.reverse();
+// };
+// var res = postorder(4)
+// console.log(res)
