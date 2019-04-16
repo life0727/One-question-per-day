@@ -86,6 +86,7 @@
 // console.log(generate(5))
 
 // var generate = function(numRows) {
+//   console.time('ww')
 //         let res = [];
 //         for(let i = 0; i < numRows;i++){
 //             let arr = [];
@@ -99,7 +100,9 @@
 //                 res.push(arr)
 //             }
 //         }
+//         console.timeEnd('ww')
 //         return res;
+        
 //     };
 //     console.log(generate(3))
 
@@ -119,3 +122,68 @@
 // };
 // var res = postorder(4)
 // console.log(res)
+// var maxArea = function(height) {
+//   let lang = height.length-1;
+//   let curArea = 0;
+//   for(let i = 0;i < height.length;i++){
+//     let gao = Math.min(height[i],height[lang])
+//     let nextArea = gao * (lang - i)
+//     curArea = Math.max(curArea,nextArea)
+//     for(let j = lang;j > i;j--){
+//       let gao1 = Math.min(height[i],height[j])
+//       let nextArea1 = gao1 * (j - i)
+//       curArea > nextArea1 ? curArea = curArea : curArea = nextArea1
+//     }
+//   }
+//   return curArea
+// };
+// maxArea([2,3,4,5,18,17,6])
+// const add = x => y => z => x + y + z;
+// var one = add(1)
+// var one2 = one(2)
+// var one3 = one2(3)
+// console.log(one2)
+
+//add(1,2) 3
+//add(1)(2) 3
+// var add = function(){
+//   if(arguments.length == 2){
+//     return arguments[0] + arguments[1]
+//   }else if(arguments.length == 1){
+//     var _arg = arguments;
+//     return function(){
+//       return _arg[0] + arguments[0]
+//     }
+//   }
+// }
+// console.log(add(1)(2))
+// var a = 866278171
+// console.log(a.toSting())
+// for(let t in (866278171.toSting())){
+//   if (t == '3'){jishu ++}
+// }
+
+// function isPrime(num) {
+//     return  num % 2 != 0 && num % 3 != 0 && num % 5 != 0 && num % 6 != 0 && num % 7 != 0 && (num % 10 == 1 || num % 10 == 7 || num % 10 == 3 || num % 10 == 9 )
+// }
+// //console.log(Math.sqrt(707829217));
+// let flag = 26605;
+// var res;
+// for(let i = 3; i < flag;i++){
+//     if(isPrime(i) && isPrime(707829217 / i) && (i * (707829217 / i) == 707829217)){
+//         res = (707829217 / i) > i ? (707829217 / i) .toString() + i.toString() : i.toString() + (707829217 / i) .toString()
+//     }
+// }
+// console.log(Number(res))
+// var arr = [1, [2, [3, 4]]];
+
+// const flater = function(arg) {
+//     let res = [];
+//     for(let i of arg){
+//         Array.isArray(i) ? res=  [...res,...flater(i)]: res.push(i)
+//     }
+//     return res
+// }
+// console.log(flater(arr))
+var num = 10;
+num > 10  &&console.log('aa')
