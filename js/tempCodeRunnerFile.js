@@ -185,5 +185,116 @@
 //     return res
 // }
 // console.log(flater(arr))
-var num = 10;
-num > 10  &&console.log('aa')
+// var num = 10;
+// num > 10  &&console.log('aa')
+// var removeElement = function(nums, val) {
+//     const leng = nums.length
+//     let num = 0;
+//     // [...nums].forEach((element,index)=> {
+//     //     if(element != val){
+//     //         console.log('adw'+index)
+//     //         //nums.splice(index,1)
+//     //         nums.unshift(val)
+//     //         num++
+            
+//     //     }
+//     // });
+//     // console.log(nums.slice(0,num))
+//     for(let i = 0;i<leng;){
+  
+//       if(nums[i] != val){
+         
+         
+//           nums.unshift(nums[i])
+
+  
+
+//           i+=nums.length - leng
+ 
+//           num++
+//       }else{
+//         i++
+//       } 
+//   }
+
+//   return nums
+
+// };
+// var removeElement = function(nums, val) {
+//   for(let i = 0 ;i < nums.length; i++){
+//     console.log(nums)
+//     if(nums[i] == val){
+//       nums.splice(nums.indexOf(nums[i]),1);
+//       i--
+//     }
+//   }
+//   return nums
+// }
+// console.log(removeElement([3,2,2,3],3))
+// var maxSubArray = function(nums) {
+
+//     let maxNum = Math.max(...nums);
+//     for(let i = 0;i < nums.length; i++){
+//         let nextNum = nums[i]
+//         let subMaxNum; 
+//         for(let j = i + 1;j < nums.length;j++){
+//             const nuum = subMaxNum ? subMaxNum : nextNum
+//             nextNum += nums[j]
+//             nuum > nextNum ? subMaxNum = nuum : subMaxNum = nextNum
+            
+//         }
+//         subMaxNum > maxNum ? maxNum = subMaxNum : maxNum = maxNum
+//     }
+//     return maxNum
+// };
+// maxSubArray([-2,1,-3,4,-1,2,1,-5,4])
+
+// const maxSubArray = (nums) => {
+//     let maxTotal = nums[0],
+//         sum = 0;
+//     for(let i of nums) {
+//         sum += i;
+//         if(maxTotal < sum) {
+//             maxTotal = sum;
+//         }
+//         if(sum < 0) {
+//             sum = 0;
+//         }
+//     }
+//     return maxTotal;
+// };
+
+// const fun = (a,b,cb) => {
+//     setTimeout(function(){
+//         cb(a + b)
+//     },2000)
+
+// }
+// fun(1,2,function(val){
+//     console.log(val)
+// })
+
+ 
+function sumAfter2000ms(a,b){
+    return new Promise((resolve,reject)=>{
+        setTimeout(function(){
+            resolve(a + b);
+        },2000);
+    });
+}
+ 
+// async function fn(){
+//    await new Promise((resolve)=>{
+//         setTimeout(()=>{resolve()},2000)
+        
+//     })
+//     console.log('我爱你')
+// }
+
+// fn()
+
+function* fn(){
+    var f = yield sumAfter2000ms(1,2)
+    console.log(f)
+}
+fn()
