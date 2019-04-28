@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    /* .father{
+        border: 1px solid gray;
+    } */
+
+    /* 不和浮动的元素重叠 start*/
+    /* .left {
+        width: 120px;
+        height: 150px;
+        float: left;
+        background: #f66;
+    }
+    .right {
+        overflow:hidden; 
+        height: 200px;
+        background:orange;
+    } */
+     /* 不和浮动的元素重叠 end*/
+ 
+
+     /* 清除浮动 start */
+     /* .left {
+        width: 120px;
+        height: 150px;
+        float: left;
+        background: #f66;
+    }
+    .right {
+        float: left;
+        width: 120px;
+        height: 200px;
+        background:orange;
+    }
+    .father{
+        border: 1px solid gray;
+        overflow:hidden; 
+    } */
+     /* 清除浮动 end */
+
+
+     /* 防止垂直 margin 重叠start */
+     .left {
+        width: 120px;
+        height: 150px;
+        margin: 20px;
+        background: #f66;
+    }
+    .right {
+        margin: 20px;
+        width: 120px;
+        height: 200px;
+        background:orange;
+    }
+    .bfc{
+        overflow:hidden; 
+    }
+     /* 防止垂直 margin 重叠end */
+</style>
+<body>
+    <div class="father">
+        <div class='left'> </div>
+        <div class="bfc">
+            <div class='right'> </div>
+        </div>
+        
+    </div>
+</body>
+<script>
+ //什么是BFC：
+ //块级格式化上下分，也就是：一个独立的渲染区域，有自己的一套渲染规则，决定了其子元素如何布局以及和其它元素的作用。
+
+ //如何形成BFC：
+ //1.根元素html标签; 2.浮动元素 3.overflow:hidden 4.display:table/inline-block/flex 5.定位display：absolute/fixed
+
+ //BFC作用：
+ //1.不和浮动的元素重叠
+ //给right设置overflow:hidden (实现两栏布局)
+
+ //2.清除浮动（父级失去高度）
+ //给父级元素设置overflow:hidden
+
+ //3.防止垂直 margin 重叠(不属于同一个BFC则不会垂直margin重叠)
+ //再给子元素设置一个BFc这样就不会是属于同一个BFC(给子元素包裹一个div设置overflow:hidden)
+
+</script>
+</html>
