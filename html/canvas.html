@@ -21,6 +21,7 @@
 <body>
     <canvas></canvas>
 </body>
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script> 
 <script>
     var canvas = document.querySelector('canvas')
     var ctx = canvas.getContext('2d')
@@ -180,8 +181,28 @@
     // img.onload = () =>{
     //     ctx.drawImage(img,50,50,50,50) //x y width height 
     // }
-
-
+    /* $.ajax({
+            type: 'get',
+            url: '../json/img.json',
+            data: null,
+            success: function(res) {
+                console.log(res)
+            },
+            error: function(err) {
+                //reject(err);
+            }
+        }) */
+        $.ajax({
+        url:'../json/img.json',
+        type:'GET',
+        dataType:'jsonp',//请求方式为jsonp
+        data:{
+            "username":"Nealyang"
+        },
+        success:function (data){
+            console.log(data);
+        }
+    })
 
 </script>
 </html>
