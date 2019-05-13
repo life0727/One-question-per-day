@@ -26,19 +26,3 @@
 // console.log(c,d,e)
 
 
-// function asy (cb) {
-//    setTimeout(()=>{
-//       cb()
-//    },2000)
-// }
-
-// asy(()=>{
-//    console.log(41)
-// })
-
-// axios 和 fetch 就是一个把ajax封装成了promise对象的包
-/* async function someGet(){
-   let res = await fetch('./url').then(data => data.data)
-   let res = await axios.get('./url').then(data => data.data)
-   console.log(res)
-} */
