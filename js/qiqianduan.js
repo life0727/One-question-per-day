@@ -26,4 +26,3 @@
 //new foo.name() 先执行foo.name()再new
 
 
-//
