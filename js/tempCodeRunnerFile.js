@@ -26,3 +26,44 @@
 // console.log(c,d,e)
 
 
+// function fun(nums) {
+//     nums = nums.sort(function(a, b) { return a - b; });
+    
+//     let i, j, k, n = nums.length,res = false;
+    
+//     for (i = 0; i < n; ++i) {
+//         if (i > 0 && nums[i] === nums[i-1]) continue;
+        
+//         for (j = i + 1; j < n; ++j) {
+//             if (j > i + 1 && nums[j] === nums[j-1]) continue;
+            
+//             for (k = j + 1; k < n; ++k) {
+//                 if (k > j + 1 && nums[k] === nums[k-1]) continue;
+                
+//                 if (nums[i] + nums[j] - nums[k] === 0) res = true ;
+//             }
+//         }
+//     }
+//     console.log(res);
+//     return res;
+// };
+// fun([2,99,3,5])
+// fun([1,50,0,5])
+
+// const a = [];
+// for(var i = 0;i<10;i++){
+//     a.push(function(){
+//         return console.log(i)
+//     })
+// }
+
+// a[0]()
+// a[1]()
+
+
+// var m = true
+// setTimeout(function(){
+//     m = false
+// },3000)
+// while(m){}
+// console.log('awd')
