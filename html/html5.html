@@ -1,0 +1,60 @@
+<!-- 什么是html5? -->
+第五代超文本标记语言，5是万维网联盟的第五次重大修改。
+
+<!-- Doctype的作用是什么 -->
+声明位于html文档中的第一行，处于标签之前，告知浏览器解析器用什么文档标准来解析。
+
+<!-- html5的新特性 -->
+1.语义化标签。{
+                <header></header>
+                <footer></footer>
+                <nav></nav>
+                <section></section>
+                <article></article>
+                <aside></aside>
+                <details></details> 
+                <dialog></dialog>
+            }
+2.增强型表单。{
+                <input type="color">
+                <input type="date">
+                <input type="datetime">
+                <input type="datetime-local">
+                <input type="email"> 新增的表单属性:pattern 属性，描述了一个正则表达式用于验证<input> 元素的值。
+                <input type="number" min="15">  新增的表单属性:min 和 max 属性，设置元素最小值与最大值。
+                <input type="range">
+                <input type="search">
+                <input type="tel"> 
+                <input type="url">  新增的表单属性:placehoder 属性，简短的提示在用户输入值前会显示在输入域上。
+            }
+3.视频和音频{
+            <audio src="a.mp3" autoplay></audio>
+            <video src="a.mp4" autoplay></video>
+            }
+4.canvas <canvas>使用Javascript来绘制图像</canvas>
+5.svg  我是指可伸缩的矢量图形   我是使用xml格式描述的2d图形语言而canvas是用js绘制图形
+6.地理定位 window.onload = function(){
+                navigator.geolocation.getCurrentPosition(function(pos){
+                    console.log(pos)
+                })
+            }         
+7.拖放api  <p draggable="true" ondragstart="start(event)" ondragend="end(event)">拖动我!</p>
+8.Web Storage {
+                localStorage : 没有时间限制的数据存储。
+                sessionStorage : 针对一个会话窗口的数据存储, 当用户关闭浏览器窗口后，数据会被删除。
+                和cookie的区别 : cookie数据大小不能超过4k,Storage大小5M左右。cookie在向服务器发送请求时会携带，Storage仅在本地保存。
+                }
+9.WebSocket  WebSocket 协议本质上是一个基于 TCP 的协议。优点在于：浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持久性的连接，并进行双向数据传输。
+             例：'网站推送技术（定时向客户端发送请求）'，传统模式每次都要发送较长的头部给服务器，其中有效数据只是很小一部分，会浪费很多宽带资源。Socket只需要握手一次，后面都是服务器定时单方面向客户端发送数据。
+                <script>
+                    var Socket = new WebSocket(url);
+                    Socket.onopen = function(){ //当建立连接时触发
+                        Socket.send("我是数据"); //发送数据
+                    }
+                    Socket.onmessage = function (data){ //	客户端接收服务端数据时触发
+                        console.log(data) //我是数据
+                    } 
+                    Socket.onopen = function(){ //当关闭连接时触发
+                        console.log('链接关闭') //我是数据
+                    }
+                </script>

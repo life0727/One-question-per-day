@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="divId">
+        我是div
+        <p id="pID">
+            我是p
+        </p>
+    </div>
+
+    <ul id="color-list">
+        <li>red</li>
+        <li>yellow</li>
+        <li>blue</li>
+        <li>green</li>
+        <li>black</li>
+        <li>white</li>
+    </ul>
+</body>
+<script>
+  var div = document.getElementById('divId');
+  var p = document.getElementById('pID');
+
+    //事件冒泡
+    //概念：事件会从目标元素开始发生，一直向上传播，直到document对象。element.addEventListener(event, function, false)
+    //例子解释：当我点击目标p的时候 先打印“我是p”然后打印“我是div”
+    div.addEventListener('click',function(){
+        console.log('我是div')
+    },false)
+    p.addEventListener('click',function(){
+        console.log('我是p')
+    },false)
+
+    
+    //事件捕获
+    //概念：事件会从最外层开始发生，直到目标元素。
+    //例子解释：当我点击目标p的时候 先打印“我是div”然后打印“我是p”。element.addEventListener(event, function, true)
+    div.addEventListener('click',function(){
+        console.log('我是div')
+    },true)
+    p.addEventListener('click',function(){
+        console.log('我是p')
+    },true)
+
+
+    //事件代理
+    //概念:利用事件冒泡，只指定一个事件处理程序，就可以管理其子元素同一类型的所有事件。
+    //例子解释：当我点击li的时候 事件会冒泡到ul所以会触发ul的点击事件。所以只在ul绑定一个事件即可
+    //优点：1.可以大量节省内存占用，减少事件注册。2.增加子节点不需要再添加事件绑定。
+    //缺点：不同的子元素处理事件逻辑不一样则需要给子元素单独判断增加代码复杂度。
+    var Ul = document.getElementById('color-list');
+    Ul.addEventListener('click',function(e){
+        console.log('我是'+ e.target.innerHTML)
+    },false)
+</script>
+</html>

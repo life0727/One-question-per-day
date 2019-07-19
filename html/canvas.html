@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            overflow: hidden;
+        }
+        canvas{
+            background-color: gray
+        }
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+</body>
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script> 
+<script>
+    var canvas = document.querySelector('canvas')
+    var ctx = canvas.getContext('2d')
+    canvas.width = document.documentElement.clientWidth    
+    canvas.height = document.documentElement.clientHeight
+    // ctx.strokeStyle = 'orange' //描边
+    // ctx.strokeRect(100,100,100,100)//画矩形
+
+
+    //画线
+    ctx.beginPath()
+    ctx.moveTo(50,50)
+    ctx.lineTo(80,80)
+    ctx.lineTo(50,90)
+    ctx.closePath()
+    ctx.strokeStyle = 'red' //描边
+    ctx.stroke();
+    ctx.fillStyle = 'yellow'
+    ctx.fill() 
+
+    //````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+    //画圆
+    /* ctx.beginPath()
+    ctx.arc(100,100,50,0,2 * Math.PI,true) //50:半径 0:起始弧度，2 * Math.PI：末尾弧度，true：逆时针
+    ctx.stroke()
+    ctx.closePath() */
+
+    //``````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+    //贝塞尔曲线
+    /* ctx.beginPath();
+    ctx.moveTo(200,200)
+    ctx.quadraticCurveTo(120,30,80,80)
+    ctx.stroke()
+    ctx.closePath() */
+
+   // ``````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+    //贝塞尔二次曲线
+    /* ctx.beginPath();
+    ctx.moveTo(100,200)
+    ctx.bezierCurveTo(120,30,60,40,80,120)
+    ctx.stroke()
+    ctx.closePath() */
+
+    //``````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+    //运动+重绘
+    /* var y = 20
+    var runArc = setInterval(()=>{
+        y += 50
+        //清屏
+        ctx.clearRect(30,0,20,500)
+        ctx.beginPath()
+        ctx.arc(50,y,20,0,2 * Math.PI,true)
+        ctx.fillStyle = '#0b283a'
+        ctx.fill()
+        ctx.closePath()
+        if(y > 500 - 50){
+            clearInterval(runArc)
+        }
+    },500) */
+
+//``````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+    //多个小球运动 class面对对象
+    /* var ballArr = [] //球的数组
+    var zhenNum = 0 //帧数
+    
+    class ball {
+        constructor(x,y,r,color,speed){
+            this.x = x;
+            this.y = y;
+            this.r = r;
+            this.color = color;
+            this.speed = speed;
+            ballArr.push(this)
+            //this. product()
+        }
+        product() {
+            ctx.beginPath();
+            ctx.arc(this.x,this.y,this.r,0,2 * Math.PI,true)
+            ctx.fillStyle = this.color
+            ctx.fill()
+            ctx.closePath()
+        }
+        run() {
+            this.x += this.speed
+        }
+    }
+
+    
+    new ball(30,80,20,'orange',10)
+    new ball(50,50,10,'red',5)
+
+
+    setInterval(() => {
+        ctx.clearRect(0,0,canvas.width,canvas.height)
+        ballArr.forEach(item => {
+            item.run()
+            item.product()
+        })
+    },200) */
+    
+    /* setInterval(() => {
+        zhenNum ++
+        ctx.fillText(zhenNum , 20 ,20)
+        var color = '#' + (Math.random()*0xffffff<<0).toString(16); 
+        new ball(Math.random() * canvas.width,Math.random() * canvas.height,10,color)
+    },500) */
+
+   // ``````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+    //鼠标滑动炫彩小球
+
+       
+    var ballsArr = []
+    class ball {
+        constructor(x,y,r,color,speed){
+            this.x = x;
+            this.y = y;
+            this.r = r;
+            this.color = color;
+            this.speed = speed;
+            this.dx = (Math.random()* 5 ) - 3
+            this.dy = (Math.random()* 5 ) - 3
+            ballsArr.push(this)
+            //this. product()
+        }
+        product() {
+            ctx.beginPath();
+            ctx.arc(this.x,this.y,this.r,0,2 * Math.PI,true)
+            ctx.fillStyle = this.color
+            ctx.fill()
+            ctx.closePath()
+        }
+        run() {
+            this.x += this.dx
+            this.x += this.dy
+            this.r -- 
+            if(this.r == 0){
+                ballsArr = ballsArr.filter(item => item != this)
+            }
+        }
+    }
+
+    setInterval(() => {
+        ctx.clearRect(0,0,canvas.width,canvas.height)
+        ballsArr.forEach(item => {
+            item.product()
+            item.run()
+        })
+    },50)
+    canvas.onmousemove = (e) => {
+        var color = '#' + (Math.random()*0xffffff<<0).toString(16); 
+        new ball(e.clientX,e.clientY,10,color)
+    }
+    
+  //  ``````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+    // let img = new Image();
+    // img.src = '../img/01.jpg'
+    // img.onload = () =>{
+    //     ctx.drawImage(img,50,50,50,50) //x y width height 
+    // }
+    /* $.ajax({
+            type: 'get',
+            url: '../json/img.json',
+            data: null,
+            success: function(res) {
+                console.log(res)
+            },
+            error: function(err) {
+                //reject(err);
+            }
+        }) */
+        $.ajax({
+        url:'../json/img.json',
+        type:'GET',
+        dataType:'jsonp',//请求方式为jsonp
+        data:{
+            "username":"Nealyang"
+        },
+        success:function (data){
+            console.log(data);
+        }
+    })
+
+</script>
+</html>
