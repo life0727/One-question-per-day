@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>head里面标签有那些，body中标签分类</title>
+</head>
+<body>
+    <!-- head里面标签有哪些，作用是什么？ -->
+    1.meta标签：不包含任何内容，可提供页面的元信息。属性有name,content,http-equiv(如果没有name则名称就用http-equiv显示)。
+      例：<meta charset="UTF-8"> 可以指定网页文档的编码格式。注：h4规范这样写的：<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+         <meta name="keywords" content="HTML,CSS,JS"> 给网页设置关键字用的，是专为搜索引擎提供服务的。
+         <meta name="description" content="网页描述的内容，这有不少字的，在搜索页面呈现的">  用于描述网站的，写在这里如果有相应的描述，就会被搜索引擎将信息显示在网站的简介之中。
+         <meta http-equiv="refresh" content="5;http://www.php.cn"> 给网站设置重定向的，content属性里面写了两个参数，用分号隔开，表示的意思的是5秒后将跳转到目标网址页面去。
+
+    2.title标签：定义网页的标题，如果不写会自动给添加。
+      例：<title>rs_锐思</title>
+
+    3.link标签：连接外部资源。属性有href(资源的地址),type(资源的类型),rel（资源与当前文档的关系）,media(规定资源在什么情况下用比如打印预览)。
+      例：<link rel="stylesheet" type="text/css" href="sstest1.css" > 正常引用样式。
+         <link rel="shortcut icon" href="/static/img/logo.png"> 页面标题前面的小图标。
+         <link rel="stylesheet" type="text/css" href="print.css" media="print"/> 比如在打印预览时可以加载此资源。
+
+    4.base标签：为页面上的所有链接规定默认地址或默认目标。属性有href和target。
+      例：<base href="http://www.w3school.com.cn/i/" /> 给所有连接比如a标签img标签设置默认地址。    
+         <base target="_blank" /> 定义连接打开方式。常用的有_self和_blank。
+
+    5.script标签：也是连接外部资源。属性有type,src。
+      例：<script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>  
+      
+    6.style标签：可以写文档样式。  
+          
+
+    tips：
+     彻底屏蔽鼠标右键  <body oncontextmenu="window.event.returnValue=false">
+     取消页面选取跟防止页面被复制  <body onselectstart="return false">
+     页面不允许被粘贴  <body onpaste="return false">
+     防止页面被复制 <body oncopy="return false">
+     页面自动刷新 <meta http-equiv="refresh" content="5">
+</body>
+</html>
