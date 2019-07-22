@@ -22,6 +22,6 @@
     3. js至底部或者异步加载执行。（defer与async）相同点：相对于HTML解析都是异步加载。
                                             不同点：async下载完立即执行，没有顺序。defer下载完延迟执行，并且会按照加载顺序执行（在页面解析完毕之后，DOMContentLoaded之前执行。注：DOMContentLoaded 事件在 html文档加载完毕，并且 html 所引用的内联 js、以及外链 js 的同步代码都执行完毕后触发）。                        
 二 代码级优化：
-   1.尽量减少对dom操作（dom解析-dom树 > css解析-css树 > 合并dom和css-render树 > 布局树-绘制树）。
+   1.尽量减少对dom操作（dom解析-dom树 > css解析-css树 > 合并dom和css-render树 > 布局树-绘制树）。 https://www.jianshu.com/p/a373a9698701
    2.减少作用域链查找（尽量少用全局变量）。
    3.减少闭包的使用。（内存占用太大以及内存泄漏）
