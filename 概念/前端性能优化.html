@@ -1,0 +1,27 @@
+一 页面级优化：
+   1.减少http请求数（需权衡 ）：{   https://juejin.im/post/5b3c87386fb9a04f9a5cb037#heading-0     
+                                1.从设计层面上来简化页面。页面越简洁明了，那么用户体验就不会繁琐，资源也就会相对减少，相应的请求也会减少。例如：百度首页
+
+                                2.合理设置http缓存。Expires，Cache-Control，Last-Modified（浏览器：If-Modified-Since），Etag（浏览器：If-None-Match），以及手动添加版本号(?v=1.1或者webapck的hash值)
+                                  Expires:响应头，代表该资源的过期时间。优点：缓存过期内，为用户省了很多流量，缓存过期后可以得到最新的资源。
+                                                                   缺点：缓存过期后，会一直读取服务器资源。
+                                  Last-Modified：响应头，服务器告诉浏览器资源上次修改时间。优点：缓存过期后如果浏览器携带的If-Modified-Since（即上一次服务器返回浏览器的last-Modfied），一致的话可以继续读缓存，不一致的话，重新请求。
+                                                                             缺点：Last-Modified 过期时间只能精确到秒。（一秒内服务器资源改变多次。。。或者修改资源时候其实内容没改只是时间变了也浪费带宽）
+                                                            
+                                  Cache-Contorl：请求/响应头，缓存相对时间的控制。权重大于Expires。浏览器先检查 Cache-Control，如果有，则以 Cache-Control 为准，忽略 Expires。如果没有 Cache-Control，则以 Expires 为准。 
+                                  
+                                  Etag：响应头，资源标识（id），由服务器告诉浏览器。权重大于Last-Modified。服务器收到浏览器的If-Modified-Since和If-None-Match（即上一次服务器返回浏览器的Etag），发现有If-None-Match，则比较 If-None-Match 和  Etag 值，忽略If-Modified-Since的比较。
+
+                                3.资源合并与压缩。脚本与css文件合并，css，image，js可以使用压缩。
+                                
+                                4.CSS Sprites。合并css图片，减少请求。
+
+                                5.懒加载资源文件。比如滑轮还未滚到第二屏则只加载第一屏的资源。js同理
+                            }
+    2. 将 CSS放在 HEAD中。先解析css再渲染页面，体验较好。
+    3. js至底部或者异步加载执行。（defer与async）相同点：相对于HTML解析都是异步加载。
+                                            不同点：async下载完立即执行，没有顺序。defer下载完延迟执行，并且会按照加载顺序执行（在页面解析完毕之后，DOMContentLoaded之前执行。注：DOMContentLoaded 事件在 html文档加载完毕，并且 html 所引用的内联 js、以及外链 js 的同步代码都执行完毕后触发）。                        
+二 代码级优化：
+   1.尽量减少对dom操作（dom解析-dom树 > css解析-css树 > 合并dom和css-render树 > 布局树-绘制树）。
+   2.减少作用域链查找（尽量少用全局变量）。
+   3.减少闭包的使用。（内存占用太大以及内存泄漏）
