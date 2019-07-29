@@ -23,7 +23,7 @@
         } */
 
         /* 第二种 margin值是对应的宽和高的一半 */
-        div{
+        /* div{
             background: orange;
             position:absolute;
             width:200px;
@@ -32,7 +32,31 @@
             left:50%;
             margin-top: -100px;
             margin-left:-100px;
-        }
+        } */
+
+       /*  第三种 flex 不需要知道子容器的宽和高 父级要有高度*/
+       /* body{
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           height: 600px;
+       }
+       div{
+            width:200px;
+            height:200px;
+            background: orange;
+       } */
+
+       /* 第四种 transfrom  */
+       div{
+            background: orange;
+            position:absolute;
+            width:200px;
+            height:200px;
+            top:50%;
+            left:50%;
+            transform: translate(-50%, -50%);
+       }
     </style>
 </head>
 <body>
