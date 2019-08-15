@@ -42,10 +42,10 @@ Function.prototype._bind = function(target){
         that.apply(target,arg)
     };
     //指定新函数的prototype与原函数prototype相同
-    function a(){}; //中间层 防止修改返回的函数prototype影响原函数的prototype
-    a.prototype = this.prototype;
-    f.prototype = new a; 
-
+    // function a(){}; //中间层 防止修改返回的函数prototype影响原函数的prototype
+    // a.prototype = this.prototype;
+    // f.prototype = new a; 
+    f.prototype = Object.create(this.prototype);
     return f;
 }
 
