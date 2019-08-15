@@ -34,6 +34,7 @@ function _objectCreate(proto){
     return new f();
 }
 
+//test _objectCreate
 var obj = _objectCreate({'objectCreate':123})
 console.log(obj.__proto__) //{ objectCreate: 123 }
 
@@ -256,3 +257,63 @@ function _instanceOf(target,origin){
 }
 
 console.log(_instanceOf([1,2],Array))
+
+//debounce
+//必须等到最后一个事件触发完成才能再次触发
+function _debounce(fn,wait,immediate){
+    let timer;
+    return function(){
+        var arg = arguments;
+        if(immediate) fn.apply(this,arg);
+        if(timer) clearTimeout(timer);
+        timer = setTimeout(() => {
+            fn.apply(this,arg);
+        },wait)
+    }
+}
+
+//test debounce
+function event(){
+    console.log("fqm");
+}
+//window.addEventListener('scroll',debounce(event,500));
+
+//Throttling
+//规定在一个限定时间内触发事件
+function _Throttling(fn,wait){
+    let prev = new Date();
+    return function(){
+        let now = new Date();
+        if(now - prev > wait){
+            fn.apply(this,arguments);
+            prev = new Date();
+        }
+    };
+}
+
+//curry
+function curry(fn, args) {
+    var length = fn.length;
+    var args = args || [];
+    return function(){
+        newArgs = [...args,...Array.from(arguments)];
+        if (newArgs.length < length) {
+            return curry.call(this,fn,newArgs);
+        }else{
+            return fn.apply(this,newArgs);
+        }
+    }
+}
+ 
+//test curry
+
+function multiFn(a, b, c) {
+    return a * b * c;
+}
+
+var multi = curry(multiFn);
+console.log(multi(2)(3)(4)) ////24
+console.log(multi(2,3,4));  //24
+console.log(multi(2)(3,4)); //24
+console.log(multi(2,3)(4)); //24
+
