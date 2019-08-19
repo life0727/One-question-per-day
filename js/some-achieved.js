@@ -317,3 +317,12 @@ console.log(multi(2,3,4));  //24
 console.log(multi(2)(3,4)); //24
 console.log(multi(2,3)(4)); //24
 
+
+//flat
+function _flat(arr){
+    return [].concat(...arr.map(item => Array.isArray(item) ? _flat(item) : [item]))
+}
+
+//test flat
+console.log(_flat([1,[2,[3,[4]]]]))  //[1,2,3,4]
+
