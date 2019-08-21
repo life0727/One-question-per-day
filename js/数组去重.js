@@ -10,7 +10,7 @@ const arr = ['1',1,22,'22','hello word',233333,6666,6666,6666];
 //循环遍历
 const res = []; 
 for(let i of arr){
-    res.indexOf(i) == -1 ? res.push(i) : ''
+    res.indexOf(i) == -1 && res.push(i)
 }
 
 console.log(res)
