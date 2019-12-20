@@ -261,10 +261,10 @@ console.log(_instanceOf([1,2],Array))
 //debounce
 //必须等到最后一个事件触发完成才能再次触发
 function _debounce(fn,wait,immediate){
-    let timer;
+    let timer = null;
     return function(){
         var arg = arguments;
-        if(immediate) fn.apply(this,arg);
+        if(immediate && !timer) fn.apply(this,arg);
         if(timer) clearTimeout(timer);
         timer = setTimeout(() => {
             fn.apply(this,arg);
