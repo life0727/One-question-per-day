@@ -27,8 +27,8 @@ var f6 = () => ({a : 1})
 console.log(f6())
 
 //可以与变量解构结合使用
-var f7 = ({a,b}) => a + b
-console.log(f7({a:10,b:9})) //19
+// var f7 = ({a,b}) => a + b
+// console.log(f7({a:10,b:9})) //19
 
 //绑定定义时所在父级作用域的this;call与apply改变不了this指向，只能传递参数，第一个参数会被忽略；
 var obj = {
