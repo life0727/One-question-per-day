@@ -1,7 +1,7 @@
     从Vue observer入手，减少递归getter，setter,来提高性能，前提数据庞大时会比较明显。
 一  利用Object.freeze()提升性能
     Object.freeze() 可以冻结一个对象。冻结之后不能向这个对象添加新的属性，不能修改其已有属性的值，不能删除已有属性，以及不能修改该对象已有属性的可枚举性、可配置性、可写性。该方法返回被冻结的对象。
-    1. 当项目里需要展示大量的数据，且只做展示时可以用他冻结。缺点：没法修改
+    1. 当项目里需要展示大量的数据，且只做展示时可以用他冻结。缺点：没法显性修改
         Vue observer里写到：if(property && property.configurable == false) return ;可见当vue实例的data里某个属性被冻结时不会再递归劫持监听。                 
         注：1.Object.freeze()冻结是的“浅冻结”。例：let ex = {propA:1,propB:{propC:2}};
                                                 Object.freeze(ex);
