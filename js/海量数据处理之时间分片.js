@@ -40,7 +40,6 @@ function timeSlice(data = [],callBack,onceNumber = 200){ //时间分片核心方
 let ul = document.getElementById('container');
 
 //test时间分片 结果:秒出 体验很好
-
 timeSlice(DATA,(item)=>{
     item.length && item.forEach(i => {
     let li = document.createElement('li');
@@ -50,7 +49,6 @@ timeSlice(DATA,(item)=>{
 },200)
 
 //test一次性导入 结果：十秒到二十秒白屏时间 体验极差
-
 // DATA.forEach(i =>{
 //     let li = document.createElement('li');
 //         li.innerText = i.position
