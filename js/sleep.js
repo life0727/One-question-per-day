@@ -33,6 +33,7 @@
 
 
 
+
 //三 promise await 来阻塞 最合理的
 // function _sleep(time){
 //     return new Promise((resolve)=>{
