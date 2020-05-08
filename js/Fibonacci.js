@@ -48,7 +48,6 @@ console.log(fibonacci(40)) //run-time = 212ms
 //     }
 //     return memoryArr[n - 1]
 // }
-
 // console.log(fibonacci(40)) //run-time = 1328ms
 
 //扩展概念
