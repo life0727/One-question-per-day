@@ -1,9 +1,13 @@
 //责任链模式
 
-//定义 
+//定义
 //避免请求发送者与接收者耦合在一起，让多个对象都有可能接受请求，将这些对象连接成一条链，并且沿着这条链传递请求，直到有对象处理他为止。
 
-//场景
+//构成角色
+//1，定义处理者类Handler。必须要有请求的处理方法(抽象)postRequest 和 定义的下一个链的处理者setNext
+//2, 定义实际处理者。需要定义自己的能够处理任务的级别 和 具体处理的任务
+
+//场景  流程审批等
 //有一个请假的例子，约定如下：
 // 请假 1 天时，需由部门副经理 ViceManager 审批。
 // 请假 2 - 3 天时，需由部门副经理 到 部门经理 Manager 审批。
@@ -62,10 +66,6 @@ class RequestHandle {
 
 
 // 使用责任链
-
-//两个角色
-//1，定义处理者类Handler。必须要有请求的处理方法(抽象)postRequest 和 定义的下一个链的处理者setNext
-//2, 定义实际处理者。需要定义自己的能够处理任务的级别 和 具体处理的任务
 
 class Handler { //处理者类
     setNext(handler) {
@@ -160,5 +160,3 @@ const request4 = new Request('fqm',10,'dosome')
 // viceManager.postRequest(request2)
 // viceManager.postRequest(request3)
 viceManager.postRequest(request4)
-
-  
