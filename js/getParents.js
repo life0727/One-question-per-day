@@ -38,7 +38,7 @@ const json = [{
 }]
 
 //json 树状结构 child 目标子元素  key 查找字段
-function findParentsById(json,child,key){
+function findParents(json,child,key){
     var parentIds = [],
         index = 0,
     hasParentId = function loop(json, index){
@@ -58,7 +58,7 @@ function findParentsById(json,child,key){
     return hasParentId ? parentIds : []
 }
 
-const pars = findParentsById(json,{id:'2-1-1-1'},'id')
+const pars = findParents(json,{id:'2-1-1-1'},'id')
 
 console.log('pars',pars)
 //pars 父级集合
