@@ -60,3 +60,29 @@
 //     node = filterEdgeNum(data[0],filterNum)
 //     edge = filterEdgeNum(data[1],filterNum)
 // })    
+
+function Gen(time) {
+    return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            resolve(time)
+        }, time)
+    })
+}
+
+// let arr = [2000,1000,4000,3000]
+// async function test() {
+    
+//     for await (let item of arr) {
+//         console.log(Gen(item), Date.now())
+//     }
+// }
+async function test() {
+    let arr = [Gen(2000), Gen(100), Gen(3000)]
+    for await(let item of arr) {
+      console.log(Date.now(), item)
+    }
+    console.log('wadwa')
+  }
+test().then(_=>{
+    console.log('da')
+})
