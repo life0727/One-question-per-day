@@ -47,7 +47,8 @@ function findParentsById(json,child,key){
                 parentIds = parentIds.slice(0, index)
                 return true
             }else if(Array.isArray(item.children)){
-                parentIds[index] = item[key]
+                parentIds[index] = item
+               // parentIds[index] = item[key]
                 return loop(item.children, index+1)
             }else{
                 return false
