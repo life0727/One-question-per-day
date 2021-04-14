@@ -86,3 +86,34 @@ async function test() {
 test().then(_=>{
     console.log('da')
 })
+
+
+///
+getNotice_type(){
+    return new Promise((resolve) => {
+        this.$fetch({
+            url: `${this.$baseUrl}/system/dict/data/list?dictType=sys_notice_type`,
+            success: (data) => {
+                resolve(data)
+            }
+        })
+    });
+},
+getNotice_typeAndSub_type(){
+    const getNotice_type = this.getNotice_type();
+    const getSub_type = new Promise((resolve) => {
+        this.$fetch({
+            url: `${this.$baseUrl}/system/dict/data/list?dictType=badcase_sub_type`,
+            success: (data) => {
+                resolve(data)
+            }
+        })
+    });
+    const getAll = Promise.all([getNotice_type, getSub_type]);
+    getAll.then((data)=>{
+        console.log('getAll_type',data)
+        this.form.noticeTypeOptions = data[0].rows;
+        this.form.subTypeOptions = data[1].rows;
+    })
+    .catch(e => this.$message.error(e));
+}
