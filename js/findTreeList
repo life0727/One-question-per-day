@@ -1,0 +1,122 @@
+const list = [
+    {
+        id:1,
+        name:11,
+        children:[
+            {
+                id:11,
+                name:11,
+                children:[
+                    {
+                        id:111,
+                        name:111,
+                    }
+                ]
+            },
+            {
+                id:12,
+                name:12
+            },
+        ]
+    },{
+        id:2,
+        name:2,
+        children:[{
+            id:23,
+            name:23
+        }]
+    },{
+        id:3,
+        name:3,
+        children:[{
+            id:31,
+            name:31,
+            children:[{
+                id:3111,
+                name:3111
+            }]
+        },{
+            id:311,
+            name:311
+        }]
+    }
+]
+
+//假设有一个findList函数， 第一个参数为源数据， 第二参数里的值默认与源数据的id对应；
+//例：findList(list,[11]) ；则返回result (可以理解为返回对应id所在的链)
+
+//结果
+result = [
+    {
+        id:1,
+        name:11,
+        children:[
+            {
+                id:11,
+                name:11,
+                children:[
+                    {
+                        id:111,
+                        name:111,
+                    }
+                ]
+            }
+        ]
+    }
+]
+
+
+//例：findList(list,[11,31]) ；则返回result
+//结果
+result = [
+    {
+        id:1,
+        name:11,
+        children:[
+            {
+                id:11,
+                name:11,
+                children:[
+                    {
+                        id:111,
+                        name:111,
+                    }
+                ]
+            }
+        ]
+    },{
+        id:3,
+        name:3,
+        children:[{
+            id:31,
+            name:31,
+            children:[{
+                id:3111,
+                name:3111
+            }]
+        }]
+    }
+]
+
+
+//这个函数findList ???
+
+
+function findList(arr, targetArr) {
+        let result = [];
+        if (Array.isArray(arr)) {
+            for (let key in arr) {
+                if (targetArr.includes(arr[key]['id'])) {
+                    result.push(arr[key]);
+                } else {
+                    const keyObj = {...arr[key], childrenFlag: this.findList(arr[key]['children'], targetArr)};
+                    if (keyObj['childrenFlag'].length > 0) {
+                        keyObj.children = keyObj.childrenFlag;
+                        delete keyObj['childrenFlag']
+                        result.push(keyObj)
+                    }
+                }
+            }
+        }
+        return result;
+    }
